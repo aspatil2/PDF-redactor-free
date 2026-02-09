@@ -1,0 +1,59 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PDF Redactor</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
+</head>
+<body>
+  <div class="app">
+    <header class="header">
+      <div>
+        <h1>PDF Redactor</h1>
+        <p>Select areas to blackout, then export a new PDF.</p>
+      </div>
+      <div class="file">
+        <label class="file-btn">
+          <input id="fileInput" type="file" accept="application/pdf">
+          Load PDF
+        </label>
+        <span id="fileName" class="file-name">No file loaded</span>
+      </div>
+    </header>
+
+    <section class="toolbar">
+      <div class="nav">
+        <button id="prevPage" class="btn" disabled>Prev</button>
+        <span id="pageInfo">Page 0 / 0</span>
+        <button id="nextPage" class="btn" disabled>Next</button>
+      </div>
+      <div class="actions">
+        <button id="applyRedaction" class="btn primary" disabled>Apply Redaction</button>
+        <button id="clearSelection" class="btn" disabled>Clear Selection</button>
+        <button id="undoRedaction" class="btn" disabled>Undo Last</button>
+        <button id="downloadPdf" class="btn accent" disabled>Download PDF</button>
+      </div>
+    </section>
+
+    <section class="canvas-wrap">
+      <div id="canvasHost" class="canvas-host">
+        <canvas id="pdfCanvas"></canvas>
+        <canvas id="overlayCanvas"></canvas>
+        <div id="emptyState" class="empty-state">Load a PDF to begin</div>
+      </div>
+    </section>
+
+    <footer class="status">
+      <span id="statusText">Ready</span>
+    </footer>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
